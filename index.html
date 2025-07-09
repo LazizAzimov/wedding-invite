@@ -37,30 +37,41 @@
         }
         
         .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            justify-content: flex-end;
-            z-index: 100;
-        }
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			z-index: 999;
+		}
+
         
         .music-btn {
-            background: rgba(255,255,255,0.9);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: all 0.3s;
-            color: var(--secondary);
-            border: none;
-            outline: none;
-        }
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background: var(--secondary);
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			border: none;
+			cursor: pointer;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+			z-index: 999;
+			transition: transform 0.2s, background 0.3s;
+		}
+
+		.music-btn:hover {
+			transform: scale(1.1);
+			background: #b8952c;
+		}
+
+		.music-btn i {
+			font-size: 0.9rem;
+			color: white;
+		}
         
         .music-btn:hover {
             transform: scale(1.1);
@@ -278,21 +289,21 @@
             letter-spacing: 1px;
         }
         
-        .wedding-date {
-            text-align: center;
-            margin: 60px 0;
-        }
-        
+		.wedding-date {
+			text-align: center;
+			margin: 10px 0 5px;
+		}
+
         .date-large {
             font-size: 3rem;
             color: var(--secondary);
             font-family: 'Playfair Display', serif;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             letter-spacing: 3px;
         }
         
         .date-subtitle {
-            font-size: 1.2rem;
+            font-size: 2.2rem;
             color: var(--text-light);
             letter-spacing: 2px;
         }
@@ -379,13 +390,14 @@
 <body>
     <div class="header">
         <button class="music-btn" id="musicBtn">
-            <i class="fas fa-music"></i>
+           <i class="fas fa-pause"></i>
         </button>
     </div>
     
-    <audio id="bgMusic" loop="">
-    <source src="river_flows_in_you.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgMusic" loop>
+  <source src="for_the_rest_of_my_life.mp3" type="audio/mpeg">
+</audio>
+
 
 
     <section class="hero">
@@ -399,15 +411,16 @@
         <section id="invitation">
             <div class="invitation">
                 <h2>Дорогие друзья и родные!</h2>
-                <p>Приближается самый прекрасный и незабываемый день в нашей жизни — день, когда мы сделаем первые шаги в нашу новую совместную жизнь.</p>
-                <p>С любовью и трепетом приглашаем вас разделить с нами этот особенный, незабываемый день — день нашей свадьбы.</p>
-                <p>Ваше присутствие станет для нас самым дорогим подарком!</p>
+                <p>В нашей жизни наступает особенный и долгожданный момент — день, с которого начнётся наша совместная история.
+				 Это не просто дата, а начало новой главы,где два сердца соединяются в одно, где сбываются мечты и рождается новая семья.</p>
+                <p>Мы, Абдулазиз и Шахинабону, с радостью и волнением приглашаем вас разделить с нами этот счастливый день — день нашей свадьбы.</p>
+                <p>С нетерпением ждём встречи и будем счастливы разделить с вами этот незабываемый день!!</p>
                 <p style="margin-top: 30px;"><strong> С уважением семья Азимовых и Абдурауфовых!</strong><br></p>
             </div>
         </section>
 
 		<section>
-  <h2>Наши прекрасные моменты</h2>
+  <h2>Начало нашей истории</h2>
   <div class="gallery">
     <div class="gallery-item">
       <img src="img/1.jpg" alt="Фото 1">
@@ -416,12 +429,7 @@
     <div class="gallery-item">
       <img src="img/2.webp" alt="Фото 2">
       <div class="gallery-caption">Мгновения, полные смысла</div>
-    </div>
-    <div class="gallery-item">
-		<img src="img/3.jpg" alt="Фото 3">
-		<div class="gallery-caption">Так выглядит счастье</div>
-			</div>
-		</div>
+   			</div>
 	</section>
 
         <section class="timer-section">
@@ -477,11 +485,11 @@
 </section>
 
 <style>
-  .calendar-section {
+ .calendar-section {
     background: var(--light);
-    padding: 80px 20px;
+    padding: 20px 20px 20px;
     text-align: center;
-  }
+}
 
   .calendar-section h2 {
     font-size: 2.5rem;
@@ -550,13 +558,9 @@
 </style>
 
 	<section>
-  <h2>Наши прекрасные моменты</h2>
+  <h2>Наша история — в этих снимках</h2>
   <div class="gallery">
-    <div class="gallery-item">
-      <img src="img/4.jpg" alt="Фото 4">
-      <div class="gallery-caption">Незабываемый день</div>
-    </div>
-    <div class="gallery-item">
+        <div class="gallery-item">
       <img src="img/5.jpg" alt="Фото 5">
       <div class="gallery-caption">Мгновения, полные смысла</div>
     </div>
