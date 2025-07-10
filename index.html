@@ -427,24 +427,25 @@
 
         <section class="timer-section">
             <h2>До нашего счастливого дня осталось:</h2>
-            <div class="timer">
-                <div class="timer-block">
-                    <div class="timer-number" id="days">29</div>
-                    <div class="timer-label">дней</div>
-                </div>
-                <div class="timer-block">
-                    <div class="timer-number" id="hours">06</div>
-                    <div class="timer-label">часов</div>
-                </div>
-                <div class="timer-block">
-                    <div class="timer-number" id="minutes">31</div>
-                    <div class="timer-label">минут</div>
-                </div>
-                <div class="timer-block">
-                    <div class="timer-number" id="seconds">05</div>
-                    <div class="timer-label">секунд</div>
-                </div>
-            </div>
+		<div class="timer">
+			<div class="timer-block">
+				<div class="timer-number" id="days">00</div>
+				<div class="timer-label">дней</div>
+			</div>
+			<div class="timer-block">
+				<div class="timer-number" id="hours">00</div>
+				<div class="timer-label">часов</div>
+			</div>
+			<div class="timer-block">
+				<div class="timer-number" id="minutes">00</div>
+				<div class="timer-label">минут</div>
+			</div>
+			<div class="timer-block">
+				<div class="timer-number" id="seconds">00</div>
+				<div class="timer-label">секунд</div>
+			</div>
+			</div>
+
         </section>
 
         <section class="wedding-date">
@@ -587,19 +588,28 @@
     </footer>
 
    <script>
-  const musicBtn = document.getElementById('musicBtn');
-  const bgMusic = document.getElementById('bgMusic');
+  function updateTimer() {
+    const weddingDate = new Date("2025-08-07T19:00:00").getTime();
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
 
-  musicBtn.addEventListener('click', () => {
-    if (bgMusic.paused) {
-      bgMusic.play();
-      musicBtn.textContent = '🔊'; // Музыка играет
-    } else {
-      bgMusic.pause();
-      musicBtn.textContent = '🔇'; // Музыка выключена
-    }
-  });
+    if (distance < 0) return;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2, '0');
+    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+  }
+
+  setInterval(updateTimer, 1000);
+  updateTimer();
 </script>
+
 
 
 
