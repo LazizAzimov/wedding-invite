@@ -381,11 +381,9 @@
 </head>
 <body>
     <div class="header">
-       <button class="music-btn" id="musicBtn" title="Музыка 🎵">🔇
-	   <i class="fas fa-play"></i>
-	   </button>
+  <button class="music-btn" id="musicBtn" title="Музыка 🎵">🔇</button>
+</div>
 
-    </div>
     
     <audio id="bgMusic" loop>
   <source src="for_the_rest_of_my_life.mp3" type="audio/mpeg">
@@ -588,6 +586,7 @@
     </footer>
 
    <script>
+  // Таймер
   function updateTimer() {
     const weddingDate = new Date("2025-08-07T19:00:00").getTime();
     const now = new Date().getTime();
@@ -608,41 +607,69 @@
 
   setInterval(updateTimer, 1000);
   updateTimer();
-</script>
 
-
-
-
-    // Таймер до свадьбы
-    function updateTimer() {
-        const weddingDate = new Date("2025-08-07T19:00:00").getTime();
-        const now = new Date().getTime();
-        const distance = weddingDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("days").textContent = days.toString().padStart(2, '0');
-        document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-        document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-    }
-
-    setInterval(updateTimer, 1000);
-    updateTimer();
-
-    // Плавная прокрутка
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+  // Плавная прокрутка
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
     });
+  });
+
+  // Музыка
+  const musicBtn = document.getElementById('musicBtn');
+  const bgMusic = document.getElementById('bgMusic');
+  let isPlaying = false;
+
+  musicBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicBtn.textContent = '🔇';
+    } else {
+      bgMusic.play();
+      musicBtn.textContent = '🔊';
+    }
+    isPlaying = !isPlaying;
+  });
 </script>
 
 
-</body></html>
+
+
+ <script>
+  // Таймер до свадьбы
+  function updateTimer() {
+    const weddingDate = new Date("2025-08-07T19:00:00").getTime();
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) return;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = String(days).padStart(2, '0');
+    document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+  }
+
+  setInterval(updateTimer, 1000);
+  updateTimer();
+
+  // Плавная прокрутка
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+</body>
+</html>
